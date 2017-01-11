@@ -3,21 +3,42 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
-public class Calculatrice extends JFrame implements MouseListener
+public class Calculatrice extends JFrame implements ActionListener
 {
 	private JPanel pan1 = new JPanel();
 	private JPanel pan2 = new JPanel();
 	private JPanel pan3 = new JPanel();
 	private JPanel pan4 = new JPanel();
-	private JLabel text = new JLabel("0");
+	private JLabel text = new JLabel();
+	
+	private JButton bout1;
+	private JButton bout2;
+	private JButton bout3;
+	private JButton bout4;
+	private JButton bout5;
+	private JButton bout6;
+	private JButton bout7;
+	private JButton bout8;
+	private JButton bout9;
+	private JButton bout10;
+	private JButton bout11;
+	private JButton bout12;
+	private JButton bo1;
+	private JButton bo2;
+	private JButton bo3;
+	private JButton bo4;
+	private JButton bo5;
+	 
+	private String affichage = "";
 	
 	public Calculatrice()
 	{
@@ -34,8 +55,11 @@ public class Calculatrice extends JFrame implements MouseListener
 		this.setContentPane(pan1);
 //		pan1.setLayout(new FlowLayout());
 		pan1.setLayout(new BorderLayout());
-		pan2.setLayout(new GridLayout(4,3,5,5));
-		pan3.setLayout(new GridLayout(5,0,5,5));
+		pan1.setBorder(new EmptyBorder(5, 5, 5, 5));
+		pan2.setLayout(new GridLayout(4,3,7,7));
+		pan2.setBorder(new EmptyBorder(5, 5, 5, 5));
+		pan3.setLayout(new GridLayout(5,1,7,7));
+		pan3.setBorder(new EmptyBorder(5, 5, 5, 5));
 		
 		
 		pan1.add(pan4, BorderLayout.NORTH);
@@ -48,19 +72,45 @@ public class Calculatrice extends JFrame implements MouseListener
 		
 		pan4.add(text);
 		
+		Font font = new Font(Font.SERIF, Font.BOLD, 30);
 		
-		JButton bout1 = new JButton("1");
-		JButton bout2 = new JButton("2");
-		JButton bout3 = new JButton("3");
-		JButton bout4 = new JButton("4");
-		JButton bout5 = new JButton("5");
-		JButton bout6 = new JButton("6");
-		JButton bout7 = new JButton("7");
-		JButton bout8 = new JButton("8");
-		JButton bout9 = new JButton("9");
-		JButton bout10 = new JButton("0");
-		JButton bout11 = new JButton(".");
-		JButton bout12 = new JButton("=");
+//		JButton bout1 = new JButton("1");
+		bout1 = new JButton("1");
+		bout1.setFont(font);
+		bout1.addActionListener(this);
+		bout2 = new JButton("2");
+		bout2.setFont(font);
+		bout2.addActionListener(this);
+		bout3 = new JButton("3");
+		bout3.setFont(font);
+		bout3.addActionListener(this);
+		bout4 = new JButton("4");
+		bout4.setFont(font);
+		bout4.addActionListener(this);
+		bout5 = new JButton("5");
+		bout5.setFont(font);
+		bout5.addActionListener(this);
+		bout6 = new JButton("6");
+		bout6.setFont(font);
+		bout6.addActionListener(this);
+		bout7 = new JButton("7");
+		bout7.setFont(font);
+		bout7.addActionListener(this);
+		bout8 = new JButton("8");
+		bout8.setFont(font);
+		bout8.addActionListener(this);
+		bout9 = new JButton("9");
+		bout9.setFont(font);
+		bout9.addActionListener(this);
+		bout10 = new JButton("0");
+		bout10.setFont(font);
+		bout10.addActionListener(this);
+		bout11 = new JButton(".");
+		bout11.setFont(font);
+		bout11.addActionListener(this);
+		bout12 = new JButton("=");
+		bout12.setFont(font);
+		bout12.addActionListener(this);
 		
 		pan2.add(bout1);
 		pan2.add(bout2);
@@ -78,11 +128,24 @@ public class Calculatrice extends JFrame implements MouseListener
 	
 		pan1.add(pan2, BorderLayout.CENTER);
 		
-		BoutonC bo1 = new BoutonC("C");
-		JButton bo2 = new JButton("+");
-		JButton bo3 = new JButton("-");
-		JButton bo4 = new JButton("*");
-		JButton bo5 = new JButton("/");
+		bo1 = new JButton("C");
+		bo1.setFont(font);
+		bo1.addActionListener(this);
+		bo2 = new JButton("+");
+		bo2.setFont(font);
+		bo2.addActionListener(this);
+		bo3 = new JButton("-");
+		bo3.setFont(font);
+		bo3.addActionListener(this);
+		bo4 = new JButton("*");
+		bo4.setFont(font);
+		bo4.addActionListener(this);
+		bo5 = new JButton("/");
+		bo5.setFont(font);
+		bo5.addActionListener(this);
+		pan3.setPreferredSize(new Dimension(100, 500));
+		
+		
 
 		pan3.add(bo1);
 		pan3.add(bo2);
@@ -91,15 +154,134 @@ public class Calculatrice extends JFrame implements MouseListener
 		pan3.add(bo5);
 		
 		
+	
 		pan1.add(pan3, BorderLayout.EAST);
 		
 		//la fenetre fait appel a son propre ecouteur d'evenements
-		addMouseListener(this);
+		//addMouseListener(this);
+		
+		
 		
 		this.setVisible(true);
 		
 		
 	}
+	//#### AVEC ACTIONLISTENER #####
+	
+	class EcouteChiffre implements ActionListener
+	{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			affichage = affichage + text.getText();
+			text.setText(affichage);
+		}
+		
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+//		System.out.println("ok");
+		if (e.getSource() == bout1)
+		{
+			text.setText("1");
+			
+			affichage = affichage + text.getText();
+			text.setText(affichage);
+		}
+		if (e.getSource() == bout2)
+		{
+			text.setText("2");
+			affichage = affichage + text.getText();
+			text.setText(affichage);
+		}
+		if (e.getSource() == bout3)
+		{
+			text.setText("3");
+			affichage = affichage + text.getText();
+			text.setText(affichage);
+		}
+		if (e.getSource() == bout4)
+		{
+			text.setText("4");
+			affichage = affichage + text.getText();
+			text.setText(affichage);
+		}
+		if (e.getSource() == bout5)
+		{
+			text.setText("5");
+			affichage = affichage + text.getText();
+			text.setText(affichage);
+		}
+		if (e.getSource() == bout6)
+		{
+			text.setText("6");
+			affichage = affichage + text.getText();
+			text.setText(affichage);
+		}
+		if (e.getSource() == bout7)
+		{
+			text.setText("7");
+			affichage = affichage + text.getText();
+			text.setText(affichage);
+		}
+		if (e.getSource() == bout8)
+		{
+			text.setText("8");
+			affichage = affichage + text.getText();
+			text.setText(affichage);
+		}
+		if (e.getSource() == bout9)
+		{
+			text.setText("9");
+			affichage = affichage + text.getText();
+			text.setText(affichage);
+		}
+		if (e.getSource() == bout10)
+		{
+			text.setText("0");
+			affichage = affichage + text.getText();
+			text.setText(affichage);
+		}
+		if (e.getSource() == bout11)
+		{
+			text.setText(".");
+			affichage = affichage + text.getText();
+			text.setText(affichage);
+		}
+		if (e.getSource() == bout12)
+		{
+			text.setText("=");
+		}
+		if (e.getSource() == bo1)
+		{
+			affichage = "0";
+			text.setText("0");
+		}
+		if (e.getSource() == bo2)
+		{
+			text.setText("+");
+			
+		}
+		if (e.getSource() == bo3)
+		{
+			text.setText("-");
+		}
+		if (e.getSource() == bo4)
+		{
+			text.setText("*");
+		}
+		if (e.getSource() == bo5)
+		{
+			text.setText("/");
+		}
+
+	}
+	
+	/*#### AVEC MOUSELISTENER ########
+	 
 	
 	//l'argument e de type MouseEvent correspond à l'objet evenement
 	//genere dans la fenetre  lors d'un clic souris . On peut utiliser
@@ -107,10 +289,10 @@ public class Calculatrice extends JFrame implements MouseListener
 	@Override
 	public void mouseClicked(MouseEvent e) 
 	{
-		int x = e.getX();
-		int y = e.getY();
-		//coordonees du curseur au moment du clic
-		System.out.println("clic au points : " + x + ", " + y);
+//		int x = e.getX();
+//		int y = e.getY();
+//		//coordonees du curseur au moment du clic
+//		System.out.println("clic au points : " + x + ", " + y);
 		
 	}
 
@@ -137,5 +319,7 @@ public class Calculatrice extends JFrame implements MouseListener
 		// TODO Auto-generated method stub
 		
 	}
+	*/
 	
+
 }

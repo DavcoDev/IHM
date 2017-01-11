@@ -3,22 +3,31 @@ import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class BoutonC extends Button implements MouseListener 
+public class BoutonC extends Button implements MouseListener
 {
 	
-	public BoutonC(String label)
+	private String text;
+	private Color color = Color.cyan;
+//	private Font font = 
+	
+	public BoutonC(String text)
 	{
-		super(label);
-		this.setBackground(Color.CYAN);
+		super(text);
+		this.text = text;
+		this.setBackground(color);
+		
 		addMouseListener(this);
+		this.setLabel("C");
+		
 		
 	}
+
 	
 	@Override
 	public void mouseClicked(MouseEvent arg0) 
 	{
 		// TODO Auto-generated method stub
-		
+		this.setBackground(Color.yellow);
 	}
 
 	@Override
@@ -31,6 +40,7 @@ public class BoutonC extends Button implements MouseListener
 	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		this.setBackground(Color.CYAN);
+		this.setLabel(text);
 	}
 
 	@Override
@@ -43,6 +53,7 @@ public class BoutonC extends Button implements MouseListener
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		this.setLabel("Relaché");
+		
 	}
 
 }

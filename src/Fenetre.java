@@ -58,7 +58,7 @@ public class Fenetre extends JFrame
 //		this.setBackground(Color.BLACK);
 //		this.getContentPane().setBackground(Color.BLUE);
 //		this.getContentPane().setVisible(true);
-		
+//		
 		
 //		panneau.setBackground(Color.green);
 //		this.setContentPane(panneau);
@@ -96,7 +96,7 @@ public class Fenetre extends JFrame
 //		this.getContentPane().add(contenu);
 		
 		calculatrice();
-		
+//		miseEnForme();
 		//Et enfin, la rendre visible 
 		this.setVisible(true);
 	}
@@ -108,7 +108,7 @@ public class Fenetre extends JFrame
 		
 		
 		
-		JButton bout2 = new JButton("Centre");
+		BoutonB bout2 = new BoutonB("Centre");
 		JButton bout3 = new JButton("Nord");
 		JButton bout4 = new JButton("Sud");
 		JButton bout5 = new JButton("Est");
